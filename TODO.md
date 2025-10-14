@@ -1,0 +1,2 @@
+- [ ] Update BookingBody interface to include vehicleType?: string; in vehicles object
+- [ ] Update vehicleBookings mapping to use vehicle.vehicleType for vehicleType field, defaulting to "car"

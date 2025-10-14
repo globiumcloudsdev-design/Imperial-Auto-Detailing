@@ -1,0 +1,14 @@
+'use client'
+
+import Navbar from "@/components/Navbar";
+import WindowTinting from "@/pages/ServiceLanding/WindowTinting";
+
+export default function WindowTintingPage() {
+  return (
+    <div className="min-h-screen">
+      <Navbar />
+      <WindowTinting />
+
+    </div>
+  );
+} 
