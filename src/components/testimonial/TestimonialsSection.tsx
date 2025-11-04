@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
 const TestimonialsSection = () => {
@@ -56,6 +56,7 @@ const TestimonialsSection = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleNext = () => {
     setDirection(1);
@@ -70,6 +71,18 @@ const TestimonialsSection = () => {
       prev === 0 ? testimonials.length - 1 : prev - 1
     );
   };
+
+  useEffect(() => {
+    intervalRef.current = setInterval(() => {
+      handleNext();
+    }, 5000);
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, []);
 
   const currentTestimonial = testimonials[currentIndex];
 
@@ -124,7 +137,7 @@ const TestimonialsSection = () => {
             className="text-center mb-10"
           >
             <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">
-              Testimonials.
+              What our clients says?
             </h2>
             <p className="text-lg text-gray-600">See what people are saying.</p>
           </motion.div>

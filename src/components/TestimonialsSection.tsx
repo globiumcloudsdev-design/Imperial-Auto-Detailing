@@ -38,8 +38,20 @@ const TestimonialsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
+          {/* Facebook Image */}
+          <div className="mb-6 flex justify-center">
+            <div className="bg-white p-2 rounded-lg">
+              <Image
+                src="/facebook-removebg-preview.png"
+                alt="Facebook"
+                width={100}
+                height={100}
+                className="object-contain"
+              />
+            </div>
+          </div>
           <h2 className="text-4xl font-extrabold text-white mb-4">
-            What Our Clients Say
+            Client Success Stories
           </h2>
 
           {/* Decorative line + bouncing circle */}

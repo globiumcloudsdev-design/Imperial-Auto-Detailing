@@ -187,8 +187,8 @@ const FeaturedWorks = () => {
               <Image
                 src="/facebook-removebg-preview.png"
                 alt="Find us on Facebook"
-                width={36}
-                height={36}
+                width={60}
+                height={60}
                 className="mb-1 object-contain"
               />
               <span className="text-lg font-semibold">Find us on Facebook</span>

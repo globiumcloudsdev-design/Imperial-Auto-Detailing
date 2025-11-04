@@ -81,9 +81,7 @@ const AboutSection = () => {
               variants={fadeInUpVariants}
               className="text-gray-300 mb-6 text-lg max-w-xl"
             >
-              We are more than just detailers; we are perfectionists dedicated
-              to preserving the beauty and value of your vehicle. Established in
-              2015, we've set the standard for premium mobile detailing services.
+            At Imperial Auto Detailing, we bring passion and precision to every shine. Founded with a love for cars and a commitment to quality, we’re redefining auto detailing with modern techniques and premium care.
             </motion.p>
 
             <motion.p

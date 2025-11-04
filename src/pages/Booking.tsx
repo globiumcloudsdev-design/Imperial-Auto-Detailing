@@ -363,6 +363,7 @@ const Booking = () => {
   return (
     <div className="min-h-screen bg-black text-white font-serif">
       <Navbar />
+      <br/>
       <div className="pt-32 pb-16 flex justify-center relative">
 
         <div className="w-full max-w-6xl px-4 flex flex-col lg:flex-row gap-8 relative z-10">
