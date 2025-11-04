@@ -44,6 +44,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import OrderSummaryAccordion from "@/components/OrderSummary";
+import Image from "next/image";
 
 // ✅ Safe wrapper for calculatePrice
 const calculatePrice = (
@@ -67,7 +68,7 @@ const ConfirmationModal = ({ open, onClose, formData, total, subtotal, isPromoVa
       <DialogContent className="sm:max-w-lg bg-gradient-to-br from-gray-900 to-black border border-gray-700 text-white">
         <DialogHeader className="text-center">
           <div className="flex justify-center mb-4">
-            <img src="/lovable-uploads/imperial logo.png" alt="Imperial Auto Detailing Logo" className="w-24 h-12 object-contain" />
+            <Image src="/lovable-uploads/imperial logo.png" alt="Imperial Auto Detailing Logo - Premium mobile car detailing services - Professional auto detailing company" width={96} height={48} className="w-24 h-12 object-contain" />
           </div>
           <DialogTitle className="text-3xl font-bold text-[#E53935] mb-2 text-center">Booking Confirmed 🎉</DialogTitle>
 

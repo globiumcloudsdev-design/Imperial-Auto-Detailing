@@ -52,13 +52,13 @@ const FeaturedWorks = () => {
   };
 
   return (
-    <section className="relative bg-white pt-16 md:pt-24 pb-16 md:pb-24 overflow-hidden">
+    <section className="relative bg-black pt-16 md:pt-24 pb-16 md:pb-24 overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* LEFT SIDE */}
           <div className="lg:pr-8">
             <motion.h2
-              className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight"
+              className="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight"
               variants={textVariants}
               initial="hidden"
               whileInView="visible"
@@ -68,7 +68,7 @@ const FeaturedWorks = () => {
             </motion.h2>
 
             <motion.p
-              className="text-lg text-gray-700 mb-8 max-w-lg"
+              className="text-lg text-gray-300 mb-8 max-w-lg"
               variants={textVariants}
               initial="hidden"
               whileInView="visible"
@@ -87,7 +87,7 @@ const FeaturedWorks = () => {
               ].map((item, index) => (
                 <motion.li
                   key={index}
-                  className="flex items-center text-gray-700 text-base"
+                  className="flex items-center text-gray-300 text-base"
                   variants={textVariants}
                   initial="hidden"
                   whileInView="visible"
@@ -165,13 +165,13 @@ const FeaturedWorks = () => {
 
         {/* BOTTOM SECTION */}
         <motion.div
-          className="mt-24 md:mt-32 text-center border-t pt-10 border-gray-100"
+          className="mt-24 md:mt-32 text-center border-t pt-10 border-gray-700"
           initial="hidden"
           whileInView="visible"
         >
           <motion.h3
             variants={textVariants}
-            className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-8"
+            className="text-3xl md:text-4xl font-extrabold text-white mb-8"
           >
             Thank You for <span className="text-red-600">Trusting Us.</span>
           </motion.h3>
@@ -196,11 +196,11 @@ const FeaturedWorks = () => {
 
             <Link
               href="#"
-              className="flex flex-col items-center text-gray-800 hover:text-gray-900 transition"
+              className="flex flex-col items-center text-gray-300 hover:text-gray-400 transition"
             >
               <span className="text-3xl text-yellow-500 mb-1">★★★★★</span>
               <span className="text-lg font-semibold">Google Reviews</span>
-              <span className="text-sm text-gray-500">5.0 Star Rating</span>
+              <span className="text-sm text-gray-400">5.0 Star Rating</span>
             </Link>
 
             <Link
@@ -209,7 +209,7 @@ const FeaturedWorks = () => {
             >
               <span className="text-3xl text-red-600 mb-1">★★★★☆</span>
               <span className="text-lg font-semibold">Yelp Reviews</span>
-              <span className="text-sm text-gray-500">4.5 Star Rating</span>
+              <span className="text-sm text-gray-400">4.5 Star Rating</span>
             </Link>
           </motion.div>
         </motion.div>

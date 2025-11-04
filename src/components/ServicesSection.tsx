@@ -67,17 +67,17 @@ const ServicesSection = () => {
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 md:mb-6">
-            Premium <span className="text-gray-300">Auto Spa Services</span>
+            Premium <span className="text-red-600">Auto Spa Services</span>
           </h2>
 
-          <div className="w-24 md:w-32 h-1 bg-gradient-to-r from-white via-gray-400 to-gray-700 mx-auto mb-6 md:mb-8 relative">
-            <div className="absolute -top-1 left-0 w-4 md:w-6 h-2 md:h-3 bg-gray-300 rounded-full animate-bounce"></div>
+          <div className="w-24 md:w-32 h-1 bg-gradient-to-r from-red-600 via-red-500 to-red-700 mx-auto mb-6 md:mb-8 relative">
+            <div className="absolute -top-1 left-0 w-4 md:w-6 h-2 md:h-3 bg-red-500 rounded-full animate-bounce"></div>
           </div>
 
-          <p className="text-base md:text-lg text-gray-400 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto">
             Transform your ride with our exclusive detailing, tinting, and
             ceramic coating — crafted for a{" "}
-            <span className="text-white font-semibold">luxury finish</span>.
+            <span className="text-red-600 font-semibold">luxury finish</span>.
           </p>
         </motion.div>
 

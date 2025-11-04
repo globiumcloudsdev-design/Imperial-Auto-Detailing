@@ -12,7 +12,7 @@ const CtaSection = () => {
   };
 
   return (
-    <section className="relative py-24 md:py-32 bg-white overflow-hidden">
+    <section className="relative py-24 md:py-32 bg-black overflow-hidden">
 
       {/* ✅ Imperial Red Diagonal Background ACCENT */}
       <div className="absolute inset-0 pointer-events-none">
@@ -47,7 +47,7 @@ const CtaSection = () => {
 
           {/* Headline */}
           <motion.h2
-            className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-4 tracking-tighter max-w-4xl mx-auto"
+            className="text-4xl md:text-6xl font-extrabold text-white mb-4 tracking-tighter max-w-4xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -58,7 +58,7 @@ const CtaSection = () => {
 
           {/* Sub-text */}
           <motion.p
-            className="text-gray-700 text-xl md:text-2xl mb-12 leading-relaxed max-w-3xl mx-auto"
+            className="text-gray-300 text-xl md:text-2xl mb-12 leading-relaxed max-w-3xl mx-auto"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -110,11 +110,11 @@ const CtaSection = () => {
                   hidden: { opacity: 0, scale: 0.8 },
                   visible: { opacity: 1, scale: 1 },
                 }}
-                className="text-center p-6 rounded-xl border-2 border-red-600/30 bg-white shadow-lg hover:shadow-red-300 transition-shadow duration-300"
+                className="text-center p-6 rounded-xl border-2 border-red-600/30 bg-black shadow-lg hover:shadow-red-300 transition-shadow duration-300"
               >
                 <Check size={26} className="text-red-600 mx-auto mb-3" />
-                <h4 className="text-lg font-bold text-gray-900">{item.title}</h4>
-                <p className="text-sm text-gray-600">{item.text}</p>
+                <h4 className="text-lg font-bold text-white">{item.title}</h4>
+                <p className="text-sm text-gray-400">{item.text}</p>
               </motion.div>
             ))}
           </motion.div>

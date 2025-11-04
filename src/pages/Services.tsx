@@ -36,7 +36,7 @@ const getVehicleImage = (id: string) => {
 
 // Helper to get icon for vehicle type
 const getVehicleIcon = (id: string) => {
-  return <Image src={getVehicleImage(id)} alt={id} width={20} height={20} className="mr-2 rounded" />;
+  return <Image src={getVehicleImage(id)} alt={`${id} vehicle icon - Imperial Auto Detailing service`} width={20} height={20} className="mr-2 rounded" />;
 };
 
 // Build service categories from services.ts

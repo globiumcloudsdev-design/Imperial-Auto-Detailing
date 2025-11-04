@@ -339,12 +339,12 @@ const Contact = () => {
             </p>
         </div>
         
-        {/* The map placeholder now uses the 'aboutsection.jpg' image as requested, 
+        {/* The map placeholder now uses the 'aboutsection.jpg' image as requested,
             giving it a stylized, relevant background. */}
         <div className="relative h-96 w-full rounded-2xl overflow-hidden shadow-2xl border-4 border-red-600">
           <Image
             src={"/about_us.png"} // Using a relevant image
-            alt="Imperial Auto Detailing Service Area Map"
+            alt="Imperial Auto Detailing Service Area Map - Mobile detailing coverage within 30 miles of Downtown - Premium car care services"
             fill
             style={{ objectFit: 'cover' }}
             className="opacity-60 dark:opacity-40 transition-opacity"

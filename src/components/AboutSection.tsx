@@ -27,7 +27,7 @@ const AboutSection = () => {
   };
 
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section className="py-24 bg-black relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left: Image Section */}
@@ -72,14 +72,14 @@ const AboutSection = () => {
 
             <motion.h2
               variants={fadeInUpVariants}
-              className="text-5xl md:text-7xl lg:text-8xl font-black text-gray-900 leading-none mb-8 tracking-tighter"
+              className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-none mb-8 tracking-tighter"
             >
               ABOUT US
             </motion.h2>
 
             <motion.p
               variants={fadeInUpVariants}
-              className="text-gray-700 mb-6 text-lg max-w-xl"
+              className="text-gray-300 mb-6 text-lg max-w-xl"
             >
               We are more than just detailers; we are perfectionists dedicated
               to preserving the beauty and value of your vehicle. Established in
@@ -88,7 +88,7 @@ const AboutSection = () => {
 
             <motion.p
               variants={fadeInUpVariants}
-              className="text-gray-600 mb-8 text-base max-w-xl"
+              className="text-gray-400 mb-8 text-base max-w-xl"
             >
               Our certified technicians use only professional-grade,
               eco-friendly products and cutting-edge techniques to ensure a
@@ -124,12 +124,12 @@ const AboutSection = () => {
             <motion.div
               key={index}
               variants={fadeInUpVariants}
-              className="bg-white rounded-xl p-4 border-b-2 border-red-600 hover:shadow-lg transition"
+              className="bg-black rounded-xl p-4 border-b-2 border-red-600 hover:shadow-lg transition"
             >
-              <h4 className="text-4xl font-black text-gray-900 mb-1">
+              <h4 className="text-4xl font-black text-white mb-1">
                 {stat.value}
               </h4>
-              <p className="text-gray-600 font-medium">{stat.label}</p>
+              <p className="text-gray-400 font-medium">{stat.label}</p>
             </motion.div>
           ))}
         </motion.div>

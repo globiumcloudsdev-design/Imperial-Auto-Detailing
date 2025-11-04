@@ -54,7 +54,7 @@ const ProcessSection = () => {
   };
 
   return (
-    <section className="py-20 bg-gray-50 relative overflow-hidden">
+    <section className="py-20 bg-black relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Heading - BIG and LEFT-ALIGNED */}
         <motion.div
@@ -64,14 +64,14 @@ const ProcessSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 mb-4 max-w-3xl">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-4 max-w-3xl">
             The Easy <span className="text-red-600">4-Step</span> Process
           </h2>
 
           {/* Divider moved to the left and shortened */}
           <div className="w-16 h-1 bg-red-600 mb-6"></div>
 
-          <p className="text-lg md:text-xl text-gray-600 max-w-2xl">
+          <p className="text-lg md:text-xl text-gray-300 max-w-2xl">
             From initial booking to the final shine, we make professional mobile
             auto detailing hassle-free.
           </p>
@@ -98,7 +98,7 @@ const ProcessSection = () => {
                 }}
               >
                 <Link href={step.link} className="block">
-                  <div className="bg-white rounded-lg shadow-md p-8 flex flex-col items-center text-center h-full border border-gray-200 transition-transform duration-200 hover:shadow-lg">
+                  <div className="bg-gray-900 rounded-lg shadow-md p-8 flex flex-col items-center text-center h-full border border-gray-700 transition-transform duration-200 hover:shadow-lg">
                     {/* Step Number */}
                     <span className="text-xs font-bold text-red-600 mb-2">{`STEP ${
                       index + 1
@@ -110,12 +110,12 @@ const ProcessSection = () => {
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    <h3 className="text-xl font-bold text-white mb-2">
                       {step.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-base text-gray-700">
+                    <p className="text-base text-gray-300">
                       {step.description}
                     </p>
                   </div>

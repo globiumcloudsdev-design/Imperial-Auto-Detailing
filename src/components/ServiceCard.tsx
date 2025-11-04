@@ -25,7 +25,7 @@ const ServiceCard = ({
 }: ServiceCardProps) => {
   return (
     <motion.div
-      className="bg-white rounded-xl shadow-lg overflow-hidden h-full flex flex-col"
+      className="bg-black rounded-xl shadow-lg overflow-hidden h-full flex flex-col"
       whileHover={{
         y: -10,
         boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
@@ -81,7 +81,7 @@ const ServiceCard = ({
         <h3 className="text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-decent-blue to-decent-lightBlue mb-2">
           {title}
         </h3>
-        <p className="text-gray-600 mb-4 text-sm md:text-base">{description}</p>
+        <p className="text-gray-400 mb-4 text-sm md:text-base">{description}</p>
 
         <div className="space-y-2.5 mb-6 flex-grow">
           {features.map((feature, index) => (
@@ -96,7 +96,7 @@ const ServiceCard = ({
               <div className="bg-decent-lightBlue/10 rounded-full p-1 mr-2">
                 <Check size={14} className="text-decent-lightBlue" />
               </div>
-              <span className="text-xs md:text-sm text-gray-700">
+              <span className="text-xs md:text-sm text-gray-300">
                 {feature}
               </span>
             </motion.div>

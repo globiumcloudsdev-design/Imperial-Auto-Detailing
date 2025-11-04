@@ -3,6 +3,10 @@ const nextConfig = {
   images: {
     domains: ['localhost'],
   },
+  transpilePackages: ['framer-motion'],
+  experimental: {
+    esmExternals: 'loose',
+  },
   webpack: (config) => {
     config.resolve.fallback = {
       ...config.resolve.fallback,
@@ -12,4 +16,4 @@ const nextConfig = {
   },
 };
 
-// module.exports = nextConfig;
+export default nextConfig;

@@ -7,15 +7,60 @@ import Footer from '@/components/Footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Imperial Auto Detailing',
-  description: 'Complete car care solution. We bring the detailing to you with premium quality and convenience.',
-
-  icons: {
-    icon: '/favicon.png', // 👈 yahan PNG set karo
+  title: 'Imperial Auto Detailing | Premium Mobile Car Detailing Services',
+  description: 'Experience luxury car detailing at your doorstep. Professional ceramic coating, paint correction, and interior detailing services. Serving premium clients within 30 miles of Downtown.',
+  keywords: 'car detailing, mobile detailing, ceramic coating, paint correction, window tinting, auto detailing, luxury car care',
+  authors: [{ name: 'Imperial Auto Detailing' }],
+  creator: 'Imperial Auto Detailing',
+  publisher: 'Imperial Auto Detailing',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
   },
-
-
-
+  metadataBase: new URL('https://imperial-auto-detailing.vercel.app'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Imperial Auto Detailing | Premium Mobile Car Detailing Services',
+    description: 'Experience luxury car detailing at your doorstep. Professional ceramic coating, paint correction, and interior detailing services.',
+    url: 'https://imperial-auto-detailing.vercel.app',
+    siteName: 'Imperial Auto Detailing',
+    images: [
+      {
+        url: '/lovable-uploads/imperial logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Imperial Auto Detailing Logo',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Imperial Auto Detailing | Premium Mobile Car Detailing Services',
+    description: 'Experience luxury car detailing at your doorstep. Professional ceramic coating, paint correction, and interior detailing services.',
+    images: ['/lovable-uploads/imperial logo.png'],
+    creator: '@imperialdetailing',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  icons: {
+    icon: '/favicon.png',
+  },
 }
 
 

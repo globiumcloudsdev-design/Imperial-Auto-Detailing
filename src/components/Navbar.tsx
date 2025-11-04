@@ -46,7 +46,7 @@ const Navbar = () => {
       </div>
 
       {/* ---------------- 2. MAIN NAVBAR ---------------- */}
-      <nav className="fixed top-9 md:top-10 left-0 w-full bg-white text-black shadow-lg z-40 px-6 md:px-12 py-3">
+      <nav className="fixed top-9 md:top-10 left-0 w-full bg-black text-white shadow-lg z-40 px-6 md:px-12 py-3">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           {/* Left: Logo */}
           <Link href="/" className="flex items-center">
@@ -77,7 +77,7 @@ const Navbar = () => {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-black hover:text-red-600 transition-colors relative pb-1 ${pathname === item.href ? "text-red-600" : ""
+                className={`text-white hover:text-red-600 transition-colors relative pb-1 ${pathname === item.href ? "text-red-600" : ""
                   }`}
               >
                 {item.label}
@@ -124,7 +124,7 @@ const Navbar = () => {
 
       {/* ---------------- 3. MOBILE MENU ---------------- */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed top-[80px] left-0 w-full bg-white shadow-xl p-5 space-y-4 z-30 border-t border-red-600/30">
+        <div className="lg:hidden fixed top-[80px] left-0 w-full bg-black shadow-xl p-5 space-y-4 z-30 border-t border-red-600/30">
           {[
             { href: "/", label: "Home" },
             { href: "/about", label: "About" },
@@ -162,3 +162,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+

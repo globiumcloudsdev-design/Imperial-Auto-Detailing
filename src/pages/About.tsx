@@ -24,7 +24,7 @@ const About = () => {
             <div className="relative z-10 p-4 bg-white border border-gray-200 shadow-xl mt-48">
               <Image
                 src="/about_us.png"
-                alt="Imperial Auto Detailing team working on car"
+                alt="Imperial Auto Detailing team working on car - Professional mobile detailing service"
                 width={700}
                 height={500}
                 className="w-full h-auto object-cover"
@@ -108,3 +108,6 @@ const About = () => {
 };
 
 export default About;
+
+
+//imperial auto detailing about page

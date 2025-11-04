@@ -11,7 +11,7 @@ const Hero = () => {
       {/* ---------------- HERO SECTION ---------------- */}
       <section
         id="hero-section"
-        className="h-[75vh] md:h-screen w-full flex items-center justify-center bg-white relative overflow-hidden"
+        className="h-[75vh] md:h-screen w-full flex items-center justify-center bg-black relative overflow-hidden"
       >
         {/* Background Overlay */}
         <div className="absolute inset-0 z-0" />
@@ -60,9 +60,9 @@ const Hero = () => {
 
       {/* ---------------- SERVICES GRID SECTION ---------------- */}
       <section
-        className="bg-white px-6 md:px-12 relative z-30 border-t-8 border-white"
+        className="bg-black px-6 md:px-12 relative z-30 border-t-8 border-black"
       >
-        {/* 👆 added red border on top & removed top padding / white gap */}
+        {/* 👆 added black border on top & removed top padding / white gap */}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-0 border-t border-b border-gray-700/50">
           {[
