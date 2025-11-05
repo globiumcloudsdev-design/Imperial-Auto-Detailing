@@ -1,5 +1,6 @@
-# TODO for Testimonials Section Update
+# TODO: Update Hero Services Grid
 
-- [x] Replace the main heading "What Our Clients Say" with "Client Success Stories" in TestimonialsSection.tsx
-- [x] Add the Facebook image (/facebook-removebg-preview.png) above the heading in the header section and ensure it is visible
-- [x] Verify the changes by checking the component renders correctly
+- [x] Add description property to each service object in the services array
+- [x] Remove the "READ MORE" button from the service cards
+- [x] Replace the button with a short highlight description for each service
+- [x] Adjust the layout and styling for the new description text

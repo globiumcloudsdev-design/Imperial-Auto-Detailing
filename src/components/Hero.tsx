@@ -69,22 +69,27 @@ const Hero = () => {
             {
               title: "CERAMIC COATING",
               img: "/ceramicafter.png",
+              description: "Advanced protection for your vehicle's paint",
             },
             {
               title: "WHEEL REPAIRS",
               img: "/wheel repairs.jpg",
+              description: "Restore and repair damaged wheels",
             },
             {
               title: "CAR DETAILING",
               img: "/car-silhouette.png",
+              description: "Comprehensive interior and exterior cleaning",
             },
             {
               title: "WINDOW TINTING",
               img: "/windowafter.png",
+              description: "Enhance privacy and reduce heat",
             },
             {
               title: "PANEL REPAIRS AND PAINT",
               img: "/panel repairs.jpeg",
+              description: "Professional bodywork and painting services",
             },
           ].map((service, idx) => (
             <motion.div
@@ -103,18 +108,15 @@ const Hero = () => {
                 <h3 className="text-base font-bold text-white px-4 pt-16 pb-2 w-full">
                   {service.title}
                 </h3>
-                <div className="flex justify-between items-center w-full px-4 pb-4">
+                <div className="w-full px-4 pb-4">
                   {service.title === "CERAMIC COATING" && (
-                    <div className="text-xs text-green-400">
+                    <div className="text-xs text-green-400 mb-2">
                       Google Rating 4.9 ★★★★★
                     </div>
                   )}
-                  <Button
-                    variant="destructive"
-                    className="text-xs px-2 h-7 bg-red-600 hover:bg-red-700"
-                  >
-                    READ MORE
-                  </Button>
+                  <p className="text-xs text-gray-300 leading-tight">
+                    {service.description}
+                  </p>
                 </div>
               </div>
             </motion.div>

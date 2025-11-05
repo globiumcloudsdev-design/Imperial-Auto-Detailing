@@ -98,9 +98,9 @@ const ImperialFooter = () => {
             <h4 className="text-lg font-bold mb-5 text-white">Detailing Services</h4>
             <ul className="space-y-3">
               {[
-                { name: "Ceramic Coating", href: "/ceramic-coating" },   
-                { name: "Detailing", href: "/detailing" },
-                { name: "Window Tinting", href: "/window-tinting" },
+                { name: "Ceramic Coating", href: "/services/ceramic-coating" },
+                { name: "Detailing", href: "/services/car-detailing" },
+                { name: "Window Tinting", href: "/services/window-tinting" },
               ].map((link, i) => (
                 <li key={i}>
                   <Link
