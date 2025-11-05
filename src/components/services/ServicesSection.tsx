@@ -71,7 +71,7 @@ const ServicesSection = () => {
   return (
     <section
       id="premium-auto-services"
-      className="py-16 md:py-20 bg-gray-50 relative overflow-hidden"
+      className="py-16 md:py-20 bg-red-600 relative overflow-hidden"
     >
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Heading */}
@@ -83,13 +83,13 @@ const ServicesSection = () => {
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 md:mb-5">
-            Premium <span className="text-red-600">Auto</span> Services
+            Premium <span className="text-white">Auto</span> Services
           </h2>
 
           {/* Divider */}
           <div className="w-24 md:w-32 h-1 bg-red-600 mx-auto mb-6 md:mb-8 relative"></div>
 
-          <p className="text-base md:text-lg text-gray-700 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-white max-w-2xl mx-auto">
             We offer a complete range of professional auto detailing services to
             keep your vehicle looking its absolute best.
           </p>
@@ -112,7 +112,7 @@ const ServicesSection = () => {
         >
           <Link href="/services">
             <MotionButton
-              className="bg-red-600 text-white hover:bg-red-700 px-8 py-4 text-lg rounded-full shadow-xl group font-semibold flex items-center justify-center mx-auto"
+              className="bg-white text-black hover:bg-black hover:text-white px-8 py-4 text-lg rounded-full shadow-xl group font-semibold flex items-center justify-center mx-auto"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
