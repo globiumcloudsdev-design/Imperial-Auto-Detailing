@@ -1,6 +1,5 @@
-# TODO: Update Hero Services Grid
+# TODO: Update City-State Mapping for Virginia Beach Nearby Cities
 
-- [x] Add description property to each service object in the services array
-- [x] Remove the "READ MORE" button from the service cards
-- [x] Replace the button with a short highlight description for each service
-- [x] Adjust the layout and styling for the new description text
+- [x] Add the provided list of nearby cities to the cityStateMap in services.ts, mapping them to "Virginia"
+- [x] Ensure the booking form auto-selects "Virginia" when these cities are entered in the city field
+
