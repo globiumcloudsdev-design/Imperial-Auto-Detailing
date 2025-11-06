@@ -136,6 +136,20 @@ const Booking = () => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const formatPhoneNumber = (value: string) => {
+    const phoneNumber = value.replace(/\D/g, "");
+    if (phoneNumber.length <= 3) {
+      return phoneNumber;
+    } else if (phoneNumber.length <= 6) {
+      return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+    } else {
+      return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(
+        3,
+        6
+      )}-${phoneNumber.slice(6, 10)}`;
+    }
+  };
+
   const [formData, setFormData] = useState({
     additionalServices: [] as string[],
     vehicles: [{ make: "", model: "", year: "", color: "", size: "", vehicleType: "", selectedPackages: [] }] as { make: string, model: string, year: string, color: string, size: string, vehicleType: string, selectedPackages: string[] }[],
@@ -884,7 +898,16 @@ const Booking = () => {
                       {/* Email + Phone */}
                       <div className="grid md:grid-cols-2 gap-4">
                         <Input name="email" type="email" placeholder="Email *" value={formData.email} onChange={handleInputChange} required />
-                        <Input name="phone" placeholder="Phone *" value={formData.phone} onChange={handleInputChange} required />
+                        <Input
+                          name="phone"
+                          placeholder="Phone *"
+                          value={formData.phone}
+                          onChange={(e) => {
+                            const formatted = formatPhoneNumber(e.target.value);
+                            setFormData((prev) => ({ ...prev, phone: formatted }));
+                          }}
+                          required
+                        />
                       </div>
 
                       {/* Address */}
@@ -932,6 +955,7 @@ const Booking = () => {
                           }
                           placeholder="Zip *"
                           className="bg-white text-black"
+                          maxLength={5}
                         />
                       </div>
 
