@@ -8,8 +8,8 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Imperial Auto Detailing | Premium Mobile Car Detailing Services',
-  description: 'Experience luxury car detailing at your doorstep. Professional ceramic coating, paint correction, and interior detailing services. Serving premium clients within 30 miles of Downtown.',
-  keywords: 'car detailing, mobile detailing, ceramic coating, paint correction, window tinting, auto detailing, luxury car care',
+  description: 'Experience luxury car detailing at your doorstep. Professional ceramic coating, paint correction, and interior detailing services. Serving premium clients in Virginia Beach, Norfolk, and Chesapeake, VA.',
+  keywords: 'car detailing, mobile detailing, ceramic coating, paint correction, window tinting, auto detailing, luxury car care, Virginia Beach, Norfolk, Chesapeake, VA',
   authors: [{ name: 'Imperial Auto Detailing' }],
   creator: 'Imperial Auto Detailing',
   publisher: 'Imperial Auto Detailing',

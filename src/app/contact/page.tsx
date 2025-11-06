@@ -5,14 +5,14 @@ import Contact from "@/pages/Contact";
 
 export const metadata: Metadata = {
   title: 'Contact Imperial Auto Detailing | Get Your Quote Today',
-  description: 'Get in touch with Imperial Auto Detailing for premium mobile car detailing services. Call (555) 555-5555 or email info@imperialdetailing.com. Serving clients within 30 miles of Downtown.',
-  keywords: 'contact imperial auto detailing, car detailing quote, mobile detailing contact, detailing appointment, car care services',
+  description: 'Get in touch with Imperial Auto Detailing for premium mobile car detailing services. Call (555) 555-5555 or email info@imperialdetailing.com. Serving clients in Virginia Beach, Norfolk, and Chesapeake, VA.',
+  keywords: 'contact imperial auto detailing, car detailing quote, mobile detailing contact, detailing appointment, car care services, Virginia Beach, Norfolk, Chesapeake, VA',
   alternates: {
     canonical: 'https://imperial-auto-detailing.vercel.app/contact',
   },
   openGraph: {
     title: 'Contact Imperial Auto Detailing | Get Your Quote Today',
-    description: 'Get in touch with Imperial Auto Detailing for premium mobile car detailing services. Call (555) 555-5555 or email info@imperialdetailing.com. Serving clients within 30 miles of Downtown.',
+    description: 'Get in touch with Imperial Auto Detailing for premium mobile car detailing services. Call (555) 555-5555 or email info@imperialdetailing.com. Serving clients in Virginia Beach, Norfolk, and Chesapeake, VA.',
     url: 'https://imperial-auto-detailing.vercel.app/contact',
     siteName: 'Imperial Auto Detailing',
     images: [
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Contact Imperial Auto Detailing | Get Your Quote Today',
-    description: 'Get in touch with Imperial Auto Detailing for premium mobile car detailing services. Call (555) 555-5555 or email info@imperialdetailing.com. Serving clients within 30 miles of Downtown.',
+    description: 'Get in touch with Imperial Auto Detailing for premium mobile car detailing services. Call (555) 555-5555 or email info@imperialdetailing.com. Serving clients in Virginia Beach, Norfolk, and Chesapeake, VA.',
     images: ['/about_us.png'],
   },
 }

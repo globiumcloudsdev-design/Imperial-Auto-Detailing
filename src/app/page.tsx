@@ -52,24 +52,29 @@ export default function Home() {
             "email": "info@imperialdetailing.com",
             "address": {
               "@type": "PostalAddress",
-              "addressLocality": "Downtown",
-              "addressRegion": "CA",
+              "addressLocality": "Virginia Beach",
+              "addressRegion": "VA",
               "addressCountry": "US"
             },
             "geo": {
               "@type": "GeoCoordinates",
-              "latitude": "34.0522",
-              "longitude": "-118.2437"
+              "latitude": "36.8529",
+              "longitude": "-75.9780"
             },
-            "areaServed": {
-              "@type": "GeoCircle",
-              "geoMidpoint": {
-                "@type": "GeoCoordinates",
-                "latitude": "34.0522",
-                "longitude": "-118.2437"
+            "areaServed": [
+              {
+                "@type": "City",
+                "name": "Virginia Beach"
               },
-              "geoRadius": "48280.3"
-            },
+              {
+                "@type": "City",
+                "name": "Norfolk"
+              },
+              {
+                "@type": "City",
+                "name": "Chesapeake"
+              }
+            ],
             "serviceType": ["Car Detailing", "Ceramic Coating", "Paint Correction", "Window Tinting", "Interior Detailing"],
             "priceRange": "$$",
             "openingHours": "Mo-Fr 08:00-18:00, Sa 09:00-16:00",

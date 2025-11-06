@@ -131,7 +131,7 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Mobile Service Coverage",
-      detail: "Serving Premium Clients within 30 miles of Downtown.",
+      detail: "Serving Premium Clients in Virginia Beach, Norfolk, and Chesapeake, VA.",
       link: "#",
     },
   ];
