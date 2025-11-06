@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ServicesSection from "@/components/services/ServicesSection";
@@ -8,9 +9,25 @@ import TestimonialsSection from "@/components/testimonial/TestimonialsSection";
 import CtaSection from "@/components/CtaSection";
 import FeaturedWorks from "@/components/FeaturedWorks";
 import ProcessSection from "@/components/ProcessSection";
+import DiscountModal from "@/components/DiscountModal";
 import { motion } from "framer-motion";
 
 export default function Home() {
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroHeight = window.innerHeight * 0.75; // Approximate hero section height (75vh)
+      if (window.scrollY > heroHeight && !localStorage.getItem('discountModalShown')) {
+        setShowModal(true);
+        localStorage.setItem('discountModalShown', 'true');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const sectionVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
@@ -70,6 +87,9 @@ export default function Home() {
         <br/>
         {/* Hero Section */}
         <Hero />
+
+        {/* Discount Modal */}
+        <DiscountModal isOpen={showModal} onClose={() => setShowModal(false)} />
 
         {/* Main Sections */}
         <div className="bg-black">
