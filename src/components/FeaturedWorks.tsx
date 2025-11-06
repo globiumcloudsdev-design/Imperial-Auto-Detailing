@@ -64,7 +64,8 @@ const FeaturedWorks = () => {
               whileInView="visible"
             >
               Car Detailing Services in <br />
-              <span className="text-red-600">Toronto and the GTA</span>
+              <span className="text-red-600">Virginia Beach and Nearby Areas</span>
+
             </motion.h2>
 
             <motion.p
@@ -119,11 +120,10 @@ const FeaturedWorks = () => {
                 <button
                   key={category}
                   onClick={() => setActiveCategory(category)}
-                  className={`px-3 py-1 text-sm font-medium rounded-full transition-colors duration-200 ${
-                    activeCategory === category
+                  className={`px-3 py-1 text-sm font-medium rounded-full transition-colors duration-200 ${activeCategory === category
                       ? "bg-red-600 text-white shadow-lg"
                       : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                  }`}
+                    }`}
                 >
                   {category}
                 </button>

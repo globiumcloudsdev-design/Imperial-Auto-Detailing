@@ -128,18 +128,16 @@ const Navbar = () => {
           {[
             { href: "/", label: "Home" },
             { href: "/about", label: "About" },
-            { href: "/ceramic-coating", label: "Ceramic Coating" },
-            { href: "/wheel-repairs", label: "Wheel Repairs" },
-            { href: "/detailing", label: "Detailing" },
-            { href: "/tinting", label: "Tinting" },
-            { href: "/panel-repair", label: "Panel Repair" },
-            { href: "/price-list", label: "Price List" },
+            { href: "/services/car-detailing", label: "Detailing" },
+            { href: "/services/ceramic-coating", label: "Ceramic Coating" },
+            { href: "/services/window-tinting", label: "Tinting" },
+            { href: "/services", label: "Services" },
             { href: "/contact", label: "Contact" },
           ].map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="block text-black hover:text-red-600 font-medium tracking-wide border-b border-gray-100 py-1"
+              className="block text-white hover:text-red-600 font-medium tracking-wide border-b border-gray-700 py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               {item.label}
@@ -151,7 +149,7 @@ const Navbar = () => {
             onClick={() => setMobileMenuOpen(false)}
             className="pt-2 block"
           >
-            <Button className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold rounded-md py-2 h-auto">
+            <Button className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold rounded-md py-3 h-auto">
               BOOK NOW
             </Button>
           </Link>

@@ -188,11 +188,14 @@ const Services = () => {
             animate="visible"
             variants={fadeIn}
           >
-            <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tighter">
+
+            <br />
+            <br />
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tighter">
               Discover Our <span className="text-red-600">Premium Services</span>
             </h1>
-            <div className="w-24 h-1 bg-red-600 mx-auto mb-6 rounded-full shadow-red-500/50 shadow-lg"></div>
-            <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
+            <div className="w-16 sm:w-20 md:w-24 h-1 bg-red-600 mx-auto mb-6 rounded-full shadow-red-500/50 shadow-lg"></div>
+            <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto px-4">
               Choose from specialized packages for every vehicle type, ensuring a
               flawless finish and long-lasting protection.
             </p>
