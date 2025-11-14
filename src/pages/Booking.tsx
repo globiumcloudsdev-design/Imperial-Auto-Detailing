@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
@@ -135,6 +135,33 @@ const Booking = () => {
   const [openCalendar, setOpenCalendar] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Load promo code from localStorage on mount (from discount modal)
+  useEffect(() => {
+    const promoToApply = localStorage.getItem('promoCodeToApply');
+    if (promoToApply) {
+      setPromoCode(promoToApply);
+      localStorage.removeItem('promoCodeToApply'); // Clear it after loading
+      // Auto-apply the promo code
+      setTimeout(() => {
+        const applyButton = document.querySelector('button[type="button"]') as HTMLButtonElement;
+        if (applyButton && promoToApply.trim() !== "") {
+          applyButton.click();
+        }
+      }, 1000); // Small delay to ensure component is ready
+    }
+
+    const appliedPromo = localStorage.getItem('appliedPromoCode');
+    if (appliedPromo) {
+      try {
+        const promoData = JSON.parse(appliedPromo);
+        setPromoCode(promoData.promoCode || "");
+        setIsPromoValid(true); // Assume it's valid since it was applied
+      } catch (err) {
+        console.error("Error parsing applied promo code:", err);
+      }
+    }
+  }, []);
 
   const formatPhoneNumber = (value: string) => {
     const phoneNumber = value.replace(/\D/g, "");
@@ -333,11 +360,82 @@ const Booking = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/book", {
+      // Generate unique booking ID
+      const bookingId = `BK-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+
+      // Transform vehicle data to match schema
+      const vehicleBookings = formData.vehicles.map((vehicle, index) => {
+        const serviceType = formData.serviceTypes[0] || "detailing"; // Default to detailing
+        const selectedPackage = vehicle.selectedPackages[0]; // Assuming single package per vehicle for simplicity
+        const serviceCategory = selectedPackage ? selectedPackage.split("-")[0] : "interior";
+
+        return {
+          id: `VB-${index + 1}`,
+          serviceType,
+          variant: vehicle.vehicleType,
+          mainService: serviceCategory,
+          package: selectedPackage || "",
+          additionalServices: formData.additionalServices,
+          vehicleType: vehicle.vehicleType,
+          vehicleMake: vehicle.make,
+          vehicleModel: vehicle.model,
+          vehicleYear: vehicle.year,
+          vehicleColor: vehicle.color,
+          vehicleLength: vehicle.size || "",
+        };
+      });
+
+      // Get promo data from localStorage
+      let promoCodeId = null;
+      let discountPercent = 0;
+      let promoCode = "";
+      if (isPromoValid) {
+        try {
+          const appliedPromo = localStorage.getItem('appliedPromoCode');
+          if (appliedPromo) {
+            const promoData = JSON.parse(appliedPromo);
+            promoCodeId = promoData.promoCodeId;
+            discountPercent = promoData.discountPercentage;
+            promoCode = promoData.promoCode;
+          }
+        } catch (err) {
+          console.error("Error parsing promo data:", err);
+        }
+      }
+
+      // Prepare payload according to schema
+      const payload = {
+        bookingId,
+        webName: "Imperial Auto Detailing",
+        formData: {
+          vehicleBookings,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          address: formData.address,
+          city: formData.city,
+          state: formData.state,
+          zip: formData.zip,
+          date: formData.date,
+          timeSlot: formData.timeSlot,
+          notes: formData.notes,
+        },
+        totalPrice: totalPrice,
+        discountedPrice: discountedPrice,
+        discountApplied: isPromoValid,
+        discountPercent: discountPercent,
+        promoCode: promoCode,
+        promoCodeId: promoCodeId,
+        submittedAt: new Date().toISOString(),
+        vehicleCount: formData.vehicles.length,
+        status: "pending",
+      };
+
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/booking`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, totalPrice: discountedPrice }),
-      });
+                body: JSON.stringify({ ...formData, totalPrice: discountedPrice }),     });
 
       if (!response.ok) {
         const errorData = await response.json();
@@ -348,7 +446,8 @@ const Booking = () => {
       setShowConfirmation(true);
       toast({ title: "Booking Successful ✅", description: "Your booking is confirmed." });
     } catch (error: any) {
-
+      console.error("Booking error:", error);
+      toast({ title: "Booking Failed ❌", description: error.message || "Please try again." });
     } finally {
       setIsSubmitting(false);
     }
@@ -383,7 +482,7 @@ const Booking = () => {
         <div className="w-full max-w-6xl px-4 flex flex-col lg:flex-row gap-8 relative z-10">
           {/* 🧭 Mobile Horizontal Progress Bar */}
           <div className="md:hidden flex justify-center mb-6">
-            <div className="flex items-center rounded-full p-4 w-full shadow-lg justify-center">
+            <div className="flex items-center rounded-full p-4 w-full shadow-lg justify-center bg-gray-900/50 backdrop-blur-sm">
               {[
                 { label: "Vehicles", icon: <Car size={16} /> },
                 { label: "Package", icon: <Package size={16} /> },
@@ -392,45 +491,34 @@ const Booking = () => {
                 const isActive = step === i + 1;
                 const isCompleted = step > i + 1;
 
-              return (
-                <div key={i}>
-                  {i > 0 && (
-                    <motion.div
-                      initial={{ width: 0, opacity: 0 }}
-                      animate={{ width: 32, opacity: 1 }}
-                      transition={{ duration: 0.4, delay: i * 0.15 + 0.1 }}
-                      className="h-0.5 rounded-full"
-                      style={{
-                        backgroundColor: step > i ? "#B22222" : "#555555",
-                      }}
-                    />
-                  )}
-                  <div className="flex flex-col items-center space-y-1">
-                    <motion.div
-                      initial={{ scale: 0.8, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.3, delay: i * 0.15 }}
-                      className={`flex items-center justify-center rounded-full w-8 h-8 border-2 shadow-md
-                        ${isActive
-                          ? "border-[#E53935] bg-[#E53935] text-white shadow-[#E53935]/40"
+                return (
+                  <div key={i} className="flex flex-col items-center">
+                    <div className="flex flex-col items-center space-y-1">
+                      <motion.div
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ duration: 0.3, delay: i * 0.15 }}
+                        className={`flex items-center justify-center rounded-full w-10 h-10 border-2 shadow-md
+                          ${isActive
+                            ? "border-[#E53935] bg-[#E53935] text-white shadow-[#E53935]/40"
+                            : isCompleted
+                              ? "border-[#B22222] bg-[#B22222] text-white shadow-[#B22222]/30"
+                              : "border-gray-600 text-gray-400 bg-[#111]"
+                          }`}
+                      >
+                        {icon}
+                      </motion.div>
+                      <span className={`text-xs font-medium text-center ${isActive
+                          ? "text-[#E53935]"
                           : isCompleted
-                            ? "border-[#B22222] bg-[#B22222] text-white shadow-[#B22222]/30"
-                            : "border-gray-600 text-gray-400 bg-[#111]"
-                        }`}
-                    >
-                      {icon}
-                    </motion.div>
-                    <span className={`text-xs font-medium ${isActive
-                        ? "text-[#E53935]"
-                        : isCompleted
-                          ? "text-[#B22222]"
-                          : "text-gray-400"
-                      }`}>
-                      {label}
-                    </span>
+                            ? "text-[#B22222]"
+                            : "text-gray-400"
+                        }`}>
+                        {label}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              );
+                );
               })}
             </div>
           </div>
@@ -1018,26 +1106,77 @@ const Booking = () => {
                       <div className="flex items-center space-x-2">
                         <Input
                           type="text"
-                          placeholder="Enter Promo Code (Optional)"
+                          placeholder={isPromoValid ? "Promo Code Applied" : "Enter Promo Code (Optional)"}
                           value={promoCode}
                           onChange={(e) => setPromoCode(e.target.value)}
                           className="bg-white text-black"
+                          readOnly={isPromoValid}
                         />
-                        {promoCode.trim() !== "" && (
+                        {promoCode.trim() !== "" && !isPromoValid && (
                           <Button
                             type="button"
-                            onClick={() => {
-                              if (promoCode.toLowerCase() === "discount15") {
-                                setIsPromoValid(true);
-                                toast({ title: "Promo Applied ✅", description: "15% discount applied." });
-                              } else {
+                            onClick={async () => {
+                              try {
+                                // Apply the promo code directly (skip validation to avoid 500 errors)
+                                const applyResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/promo-codes/apply`, {
+                                  method: "POST",
+                                  headers: {
+                                    "Content-Type": "application/json",
+                                  },
+                                  body: JSON.stringify({
+                                    promoCode: promoCode,
+                                    amount: totalPrice
+                                  }),
+                                });
+
+                                if (!applyResponse.ok) {
+                                  setIsPromoValid(false);
+                                  toast({ title: "Invalid Promo ❌", description: "Failed to apply promo code. Please try another code.", variant: "destructive" });
+                                  return;
+                                }
+
+                                const applyData = await applyResponse.json();
+
+                                if (applyData.success) {
+                                  setIsPromoValid(true);
+                                  localStorage.setItem('appliedPromoCode', JSON.stringify({
+                                    promoCode: applyData.data.promoCode,
+                                    discountPercentage: applyData.data.discountPercentage,
+                                    discountAmount: applyData.data.discountAmount,
+                                    finalAmount: applyData.data.finalAmount,
+                                    promoCodeId: applyData.data.promoCodeId,
+                                    agentInfo: applyData.data.agentInfo,
+                                    remainingUsage: applyData.data.remainingUsage,
+                                    promoDetails: applyData.data.promoDetails
+                                  }));
+                                  toast({ title: "Promo Applied ✅", description: `${applyData.data.discountPercentage}% discount applied.` });
+                                } else {
+                                  setIsPromoValid(false);
+                                  toast({ title: "Invalid Promo ❌", description: applyData.message || "Please try another code.", variant: "destructive" });
+                                }
+                              } catch (err) {
+                                console.error("Error applying promo code:", err);
                                 setIsPromoValid(false);
-                                toast({ title: "Invalid Promo ❌", description: "Please try another code.", variant: "destructive" });
+                                toast({ title: "Error ❌", description: "Failed to apply promo code. Please try again.", variant: "destructive" });
                               }
                             }}
                             className="bg-[#E53935] text-[#FFFFFF] hover:bg-[#FF6F61]"
                           >
                             Apply
+                          </Button>
+                        )}
+                        {isPromoValid && (
+                          <Button
+                            type="button"
+                            onClick={() => {
+                              setPromoCode("");
+                              setIsPromoValid(false);
+                              localStorage.removeItem('appliedPromoCode');
+                              toast({ title: "Promo Removed", description: "Promo code has been removed." });
+                            }}
+                            className="bg-red-600 text-white hover:bg-red-700"
+                          >
+                            Remove
                           </Button>
                         )}
                       </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ServicesSection from "@/components/services/ServicesSection";
@@ -14,18 +14,32 @@ import { motion } from "framer-motion";
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
+  const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const heroHeight = window.innerHeight * 0.75; // Approximate hero section height (75vh)
-      if (window.scrollY > heroHeight && !localStorage.getItem('discountModalShown')) {
-        setShowModal(true);
-        localStorage.setItem('discountModalShown', 'true');
-      }
-    };
+    // Show modal only once - check if promo code has been claimed
+    const hasClaimedPromo = localStorage.getItem('promoCodeClaimed');
+    if (!hasClaimedPromo) {
+      // Set up intersection observer for hero section
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              // Hero is out of view, show modal
+              setShowModal(true);
+              observer.disconnect(); // Stop observing once shown
+            }
+          });
+        },
+        { threshold: 0.1 } // Trigger when 10% of hero is visible
+      );
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+      if (heroRef.current) {
+        observer.observe(heroRef.current);
+      }
+
+      return () => observer.disconnect();
+    }
   }, []);
 
   const sectionVariants = {
@@ -85,13 +99,21 @@ export default function Home() {
           }),
         }}
       />
+      <script
+        type="text/javascript"
+        dangerouslySetInnerHTML={{
+          __html: `window.$crisp=[];window.CRISP_WEBSITE_ID="5101f18c-0e4e-4b15-a44b-3072ca488e30";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();window.$crisp.push(["set", "chat:branding", false]);`
+        }}
+      />
       <div className="min-h-screen overflow-hidden">
         <Navbar />
 
         <br/>
         <br/>
         {/* Hero Section */}
-        <Hero />
+        <div ref={heroRef}>
+          <Hero />
+        </div>
 
         {/* Discount Modal */}
         <DiscountModal isOpen={showModal} onClose={() => setShowModal(false)} />
@@ -128,6 +150,7 @@ export default function Home() {
           >
             <AboutSection />
           </motion.div>
+
 
           <motion.div
             initial="hidden"
